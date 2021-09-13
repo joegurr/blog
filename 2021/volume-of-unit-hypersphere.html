@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Volume of the Unit Hypersphere</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>
+      <a href="/" rel="home">Joe Gurr</a>
+    </h1>
+  </header>
+  <main>
+    <article>
+      <header>
+        <h2>Volume of the Unit Hypersphere</h2>
+        <time date="2022-02-21">September 2021</time>
+      </header>
+      <div>
+        <h3>Intro</h3>
+        <p>
+          <span style="color: grey">
+            "It is not easy to become an educated person."
+          </span>
+          <span>- Richard Hamming</span>
+        </p>
+        <p>
+          This post is about n-dimensional space and how our naïve intuition
+          often fails us when thinking about more than 3 dimensions.
+          The content of this post has been almost entirely lifted from chapter
+          9 of Richard Hamming's excellent book <em>The Art of Doing Science
+          and Engineering</em>. The main reason I wanted to write this up is
+          that I got stuck on a particular step and wanted to make it crystal
+          clear (a good way to practice my technical writing). Moreover I did
+          not know this and I thought it was awesome and wanted to share it!
+          A caveat for those with some more mathematical training, I will be
+          doing the following in classical Euclidean space using the
+          Pythagorean distance.
+        </p>
+        <div>
+          <h3>Recap</h3>
+          <p>
+            For those unfamiliar with n-dimensional space a quick recap:
+
+            We geometrically represent one dimensional space as a line.
+            You can only move forward or backwards on the line.
+            Algebraically we can represent a point in one dimensional space
+            with just one coordinate \((x_1)\). We think of this of where you
+            are on the line relative to the point 0.
+
+            Two dimensions we can represent with a plane, you can move up,
+            down, and side to side. We represent points in two dimensional
+            space with two coordinates \((x_1, x_2)\).
+
+            Three [spatial] dimensions is where we live. It can be
+            represented using three coordinate axes, an \(x, y,\) and \(z\).
+            A point in three dimensional space looks like this
+            \((x_1, x_2, x_3)\).
+
+            More than three dimensions is basically impossible for us
+            mortals to visualise. We can only really represent points
+            and objects in n-dimensions algebraically.
+            A point in n-dimensions looks like this
+            \((x_1, x_2, ..., x_{n-1}, x_n)\)
+          </p>
+        </div>
+        <div>
+          <h3>What is a [Hyper]sphere?</h3>
+          <p>
+            We commonly think of a sphere as an object that only lives in
+            three dimensions. If we extend ourselves a little and think of a
+            sphere as a more general object then we can make it applicable over
+            any number of dimensions. If we take the definition of a sphere to
+            be "the collection of all points equidistant to a single particular
+            point", then this defines a line segment in one dimension, a circle
+            in two dimensions, and a sphere in three dimensions. Mathematicians
+            use this definition for hyperspheres in \(n> 3\) dimensions. In
+            this post we want to consider only the unit hyperspheres, that is,
+            those hyperspheres where the radius (the equidistant length) is 1.
+          </p>
+        </div>
+        <div>
+          <h3>Volume of a unit Hypersphere</h3>
+          <p>
+            Hopefully you'll believe me that the volume (the amount of space
+            enclosed by a shape) of a hypercube with
+            side length \(x\) is \(x^n\). If we were to think about it, the
+            volume of a hypersphere must have the form \(V = C_nr^n\). It must
+            be linearly related to the volume of the hypercube with side length
+            \(r\). One way to calculate volume is to think about volume as a
+            sum of infinitesimally small shells (... remember volumes by
+            revolution and volumes by shells?). Each shell would have an area
+            and be multiplied by an small increment relative to the radius
+            \(dr\). When we talk about the area of a shell what we are talking
+            about turns out to be a surface area. Surface area is very easy to
+            calculate for a sphere. For spheres it turns out to just be the
+            derivative of volume \(\frac{dV_n(r)}{dr} = nC_nr^{n-1}\). The next
+            few sections will be a little technical while we try and calculate
+            \(C_n\).
+          </p>
+        </div>
+        <div>
+          <h3>Gamma Function</h3>
+          <p>
+            I am going to pull a magic function out of the air. Partly because
+            I think you should read the chapter in full, and partly because it
+            was an expression involving this function that I got stuck on.
+            We will use this function to calculate \(C_n\)
+
+            Here is the gamma function:
+            \begin{align*}
+            \Gamma (m) = \int_{-\infty}^\infty x ^ {m-1} e^{-x} dx\\
+            \end{align*}
+
+            It is a generalization of the factorial (!) function.
+            It has the property \(\Gamma(m) = (m-1)\Gamma(m-1)\) with
+            \(\Gamma(1) = 1\). Surprisingly we also get
+            \(\Gamma(\frac{1}{2}) = \sqrt\pi\).
+
+            Now let's raise it to the \(n\)th power
+
+            \begin{align*}
+            \Gamma^n(m) &= (\int_{-\infty}^\infty x ^ {m-1} e^{-x} dx)^n\\
+            &= \Pi_{i=1}^\infty\int_{-\infty}^\infty {x_i} ^ {m-1} e^{-x_i} dx\\
+            \end{align*}
+
+            and now let's set \(m = \frac{1}{2}\)
+
+            \begin{align*}
+            \Gamma^n(\frac{1}{2}) &= \Pi_{i=1}^\infty\int_0^\infty {x_i} ^ {-\frac{1}{2}} e^{-x_i} dx
+            \end{align*}
+
+            let \(x_i = {t_i}^2\) then \(d{x_i} = 2{t_i}d{t_i}\) which gives us
+
+            \begin{align*}
+            \Gamma^n(\frac{1}{2}) &= \Pi_{i=1}^\infty\int_0^\infty {t_i} ^ {-1} e^{{-t_i}^2} 2{t_i}d{t_i}\\
+            &= \Pi_{i=1}^\infty 2 \int_0^\infty e^{{-t_i}^2} d{t_i} \\
+            &= \Pi_{i=1}^\infty \int_{-\infty}^\infty e^{{-t_i}^2} d{t_i} \\
+            & = \int_{-\infty}^\infty e^{-({t_1}^2 + {t_2}^2 + ... + {t_n}^2)} d{t_1}d{t_2} ... d{t_n}
+            \end{align*}
+
+
+            To evaluate this integral we will use a common technique.
+            We will change coordinates to hyperspherical
+            coordinates.
+
+            \(r^2 = {t_1}^2 + {t_2}^2 + ... + {t_n}^2\) and
+            \(d{t_1}d{t_2} ... d{t_n} = r^{n-1}drd\Omega\) where \(d\Omega = d\theta_1 ... d\theta_{n-1}\)
+
+            which gives us
+
+            \begin{align*}
+            \Gamma^n(\frac{1}{2}) &= \int_{\Omega}\int_0^\infty e^{-{r}^2} r^{n-1} drd\Omega\\
+            &= \int_0^\infty e^{-{r}^2} A r^{n-1} dr
+            \end{align*}
+
+            Now this \(Ar^{n-1}\) looks la lot like we had before,
+            our \(nC_nr^{n-1}\) to be exact.
+
+            We can easily change our arbitrary variable \(A\) to be \(nC_n\)
+            to get
+
+            \begin{align*}
+            \Gamma^n(\frac{1}{2}) &= nC_n\int_0^\infty e^{-{r}^2} r^{n-1} dr\\
+            \end{align*}
+
+            ...
+
+            Home stretch now.
+
+            Let \(t = r^2\) then \(dt = 2rdr\)
+
+            and we get
+
+            \begin{align*}
+            \Gamma^n(\frac{1}{2}) &= nC_n\int_0^\infty e^{-{r}^2} r^{n-1} dr\\
+            & = \frac{nC_n}{2} \int_o^\infty e ^ {-t} t^{\frac{n}{2} - 1} dt\\
+            & = \frac{nC_n}{2} \Gamma(\frac{1}{2})\\
+            & = C_n \Gamma(\frac{n}{2} + 1)
+            \end{align*}
+
+            from which we get
+
+            \begin{align*}
+            C_n = \frac{\pi^{\frac{n}{2}}}{\Gamma(\frac{n}{2} + 1)} = \frac{2 \pi}{n} C_{n-2}
+            \end{align*}
+          </p>
+        </div>
+        <div>
+          <h3>
+            ... Finally: the volume of a unit hypersphere
+          </h3>
+          <p>
+            \begin{align*}
+            V &= C_nR^n\\
+            C_n &= \frac{2 \pi}{n} C_{n-2}
+            \end{align*}
+
+            Given this recursive relationship we can figure out the volume
+            coefficient for any hypersphere. Starting with \(C_1 = 2\), and
+            \(C_2 = \pi\) (why?) we get \(C_3 = \frac{4\pi}{3}\)
+
+            It can be shown that for \(n = 2k\) we have
+            \(C_n = \frac{\pi}{k!}\) which goes to zero as k increases. It
+            can also be shown that the \(C_n\) is a smooth function so that it is
+            fine for us to only consider the evens.
+
+            What this says is that the volume of a unit hypersphere decreases
+            to zero as the number of dimensions increase. HOW WEIRD IS THAT!?!
+          </p>
+        </div>
+        <div>
+          <h3>
+            Conclusion
+          </h3>
+          <p>
+            I love maths for its own sake, however I have tried (perhaps too
+            hard) to pull a physical interpretation and meaning out of all of
+            this. Really I think I have just absorbed Hamming's perspective,
+            which I can simplistically sum up as: Any design problem
+            fundamentally is an n-dimensional optimisation (perhaps not every
+            dimension is the same Field/Vector Space, nor uses the same
+            metrics). We always have many parameters and options to chose. The
+            daily reasoning we do is so complex and is incredibly difficult to
+            model or inuit about.
+
+            We always need to be challenging our preconceived notions and
+            expectations!
+          </p>
+        </div>
+    </article>
+  </main>
+  <footer></footer>
+</body>
+
+</html>
