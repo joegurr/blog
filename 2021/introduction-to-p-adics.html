@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Intro to the p-adics</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>
+      <a href="/" rel="home">Joe Gurr</a>
+    </h1>
+  </header>
+  <main>
+    <article>
+      <header>
+        <h2>An Introduction To The p-adic Numbers</h2>
+        <time date="2022-02-21">October 2021</time>
+      </header>
+      <div class="under-construction">
+        <p><strong>&#9888 UNDER CONSTRUCTION &#9888</strong></p>
+      </div>
+      <div>
+        <h3>Intro</h3>
+        <p>
+          <span style="color: grey">"... in mathematics you don't understand things. You just get used
+            to them"</span><span>- John Von Neumann</span>
+        </p>
+        <p>
+          This is a text version of a presentation I gave during my
+          undergraduate mathematics degree during a first course in topology. I
+          was lucky enough to do this as a reader course with Dr. Andrew Kepert,
+          and am very grateful for his guidance and support.
+        </p>
+        <p>My presentation was largely inspired by this <a href="https://www.youtube.com/watch?v=vdjYiU6skgE">youtube
+            video</a>. The creator does a much better job of saying what I'm trying to here. Any credits to this post
+          are surely due much more to them.</p>
+        <p>
+          I am going to walk you through a simplified construction of the p-adic
+          numbers by showing the similarities to how the reals are constructed.
+          Then we will go through some properties of the p-adic numbers.
+        </p>
+        <p>This post is structured in the following order:</p>
+        <ul>
+          <li>Tools</li>
+          <li>p-adic Absolute Value and Metric</li>
+          <li>Geometry of \(( \mathbb{Q}, d_p )\)</li>
+          <li>Motivation for \( \mathbb{Q}_p \)</li>
+          <li>Properties of \( \mathbb{Q}_p \)</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Tools</h3>
+        <p>First, some definitions:</p>
+        <p>
+          <strong>Rational Numbers</strong>: \(\mathbb{Q} = \{ \frac{a}{b} | a,
+          b \in \mathbb{Z}, b \ne 0 \}\)
+        </p>
+        <p>
+          <strong>Field</strong>: a set \( \mathbb{F} \) on which \( +, -,
+          \times, \div \) are defined and behave as expected (e.g.
+          \(\mathbb{Q}\) with normal operations forms a field, but
+          \(\mathbb{N}\) with normal operations is NOT a field)
+        </p>
+        <p>
+          <strong>Absolute Value</strong>: First define \( \mathbb{Q}_{\geq 0} =
+          \{ x \in \mathbb{Q} | x \geq 0\}\) (known as the nonnegative
+          rationals). Then any function \( | \cdot | : \mathbb{F} \rightarrow
+          \mathbb{Q}_{\geq 0}\) that satisfies
+        </p>
+        <ul>
+          <li>\(|a| \geq 0\)</li>
+          <li>\(|a| = 0 \iff a = 0\)</li>
+          <li>\(|ab| = |a||b|\)</li>
+          <li>\(|a + b| \leq |a| + |b|\)</li>
+        </ul>
+        <p>
+          is known as an absolute value on the field (absolute values are not
+          unique. For example there is always the trivial one where it takes
+          value 0 for some value of \(\mathbb{F}\) and 1 for all other values).
+        </p>
+        <p>
+          The classic absolute value on \(\mathbb{Q}\) is that \(|x|\) is just
+          \(x\) when \(x \in \mathbb{Q}_{\geq 0}\) and \(-x\) otherwise.
+        </p>
+      </div>
+      <div>
+        <h3>Tools (cont)</h3>
+        <p><strong>Metric Space</strong>: given a set \(X\), a metric \(d\), is a "distance" function \(d: X \times X \rightarrow \mathbb{Q}_+\) which has the following properties:</p>
+        <ul>
+          <li>\(d(x,y) \geq 0\)</li>
+          <li>\(d(x,y) = 0 \iff x = y\)</li>
+          <li>\(d(x,y) = d(y,x)\)</li>
+          <li>\(d(x,y) \leq d(x,z) + d(y,z)\)</li>
+        </ul>
+        <p>A metric space is a set \(X\), with a metric on it \((X, d)\).</p>
+        <p>e.g. a set \(\mathbb{Q}\), and a metric \(d(x,y) = |x - y|\), give us a metric space \((\mathbb{Q}, d)\).</p>
+        <p><strong>Open Ball</strong>: \(B(a, r) = \{x \in X | d(a, x) < r\}\)</p>
+            <p>e.g.</p>
+            <figure>
+              <img src="./p-adics-images/open-ball.png" alt="open ball in 2 dimensions" width="300" />
+              <figcaption>\(B((2,2), 1)\) in \((\mathbb{R}, d)\)</figcaption>
+            </figure>
+      </div>
+      <div>
+        <h3>One Way to Express a Rational Number</h3>
+        <p>
+          Fix \(p\) prime. Let \(x \in \mathbb{Q}\). The we can always express
+          \(x\) as
+        </p>
+        <p>\(x = p^ n \frac{g}{h}\)</p>
+        <p>
+          where \(\frac{g}{h}\) is a fraction in its lowest terms (i.e.
+          neither \(g\) or \(h\) is divisible by \(p\).)
+        </p>
+      </div>
+      <div>
+        <h3>p-adic Absolute Value on Q</h3>
+        <p>For \(x\in\mathbb{Q}, x \neq 0\) we define the p-adic absolute value from the rationals to the non-negative rationals as \(|\cdot|_p : \mathbb{Q} \rightarrow \mathbb{Q}_+\), as \(|x|_p = |p^n\frac{g}{h}| = p^{-n}\) and \(|0|_p = 0\)</p>
+        <p>e.g.let \(p=7, x = \frac{147}{5}\) then you have \(|\frac{147}{5}|_7 = |7^2\frac{3}{5}|_7 = 7^{-2}\)</p>
+        <p></p>
+      </div>
+      <div>
+        <div>
+          <h3>p-adic metric on Q</h3>
+          <p>\(d_p : \mathbb{Q} \times \mathbb{Q} \rightarrow \mathbb{Q}_{\geq 0}\)</p>
+          <p>\(d_p(x,y) : {| x - y |}_p\)</p>
+          <p>e.g. for \(p=5\) we claim that 627 and 2 are closer together than 3 and 2. \(d_5(657, 2) = |625|_5 = |5^3|_5 = 5^{-3}|\) and \(d_5(3,2) = |1|_5 = |5^0| = 1\).</p>
+        </div>
+        <div>
+          <h3>Geometry of Open Balls</h3>
+          <p>Consider \((\mathbb{Q}, d_p)\). Then \(B(a,r) = \{x \in \mathbb{Q}: d(a,x) < r\}\). By the definition of \(| \cdot |_p\ r) will only take discrete values in \(\{p^n, n\in\mathbb{Z}\}\). This gives a very interesting geometric intepretation.</p>
+          <p>e.g.</p>
+          <figure>
+            <img src="./p-adics-images/3-adic-ball-geometry.png" alt="geometry of 3 adic balls" width="400" />
+            <figcaption>Consider the open balls of \(\mathbb{Q}, d_3\)</figcaption>
+          </figure>
+        </div>
+        <div>
+          <h3>Cauchy Sequences</h3>
+          <p>Let \( (X, d) \) be a metric space.</p>
+          <p>
+            Formally, a sequence \((x_1, x_2, x_3, x_4, ...) \in X\) is called a
+            Cauchy Sequence if for every real number \(\varepsilon\) there
+            exists an \(N \in \mathbb{N}\) such that for every \(m,n > N\) you
+            have \( d(x_m, x_n) < \varepsilon \) </p>
+            <p>Cauchy sequences allow us to use words like "eventually" and "arbitrarily" in a formal sense.</p>
+        </div>
+        <div>
+          <h3>Completeness</h3>
+          <p>
+            A metric space \( (X, d) \) is complete if every Cauchy Sequence
+            converges.
+          </p>
+          <p>
+            e.g. \(( \mathbb{Q}, d )\) is NOT complete because the sequence \(
+            (1, 1.4, 1.41, 1.414, 1.4142, ...) \) gets arbitrarily close to
+            \(\sqrt{2}\) - that is, it forms a Cauchy Sequence, but it does not
+            converge in \(\mathbb{Q}\) as \( \sqrt{2} \notin \mathbb{Q}\)
+          </p>
+        </div>
+        <div>
+          <h3>Construction Of The Reals</h3>
+          <p>
+            One way to do this is to complete the metric space \((\mathbb{Q},
+            d)\)
+          </p>
+        </div>
+        <div>
+          <h3>Is \((\mathbb{Q}, d_p)\) Complete?</h3>
+          <p>No. Why?</p>
+          <p>Fix \(p=3\), i.e. we are considering \((\mathbb{Q}, d_3)\)</p>
+          <p>Consider the sum \(1 + 3 + 3^2 + 3^3 + \dots \notin \mathbb{Q}\)</p>
+          <p>Now consider the sequence of partial sums</p>
+          <p>\(\{1, 1+3, 1+ 3+3^2, 1+3+3^3+3^3, \dots\} = \{1, 4, 13, 40, \dots\}\)</p>
+          <p>This sequence is Cauchy with respect to \(d_3\)</p>
+          <p>So since we have a Cauchy sequence that does not converge, \((\mathbb{Q}, d_3)\) is not complete. A similar
+            construction can be made for each \((\mathbb{Q}, d_p)\).</p>
+        </div>
+        <div>
+          <h3>Completion of \((\mathbb{Q}, d_p)\)</h3>
+          <p>\(\mathbb{Q}_p =\) the completion of \((\mathbb{Q}, d_p)\)</p>
+          <p>Every p-adic number (\(x \in \mathbb{Q}_p\)) can be written as:</p>
+          <p>
+            \(x = \dots + a_kp^k + a_{k-1}p^{k-1} + \dots + a_0 + \dots + a_{-k +
+            1}p^{-k + 1} + a_{-k}p^{-k} + \dots \)
+          </p>
+          <p>Which can be written more conveniently as:</p>
+          <p>
+            \(x = \overline{(\dots a_ka_{k-1}\dots a_0\dots
+            a_{-k+1}a_{-k}\dots)_{\mathbb{Q}_p}}\)
+          </p>
+        </div>
+        <!-- <div>
+          <h3>Examples in \(\mathbb{Q}_7\)</h3>
+        </div> -->
+        <div>
+          <h3>Properties of \( \mathbb{Q}_p \)</h3>
+          <p>\(\sum_{n=0}^\infty (p-1)p^n = -1\)</p>
+          <p>All triangles in \(\mathbb{Q}_p\) are isosceles</p>
+          <p>\(\mathbb{Q}_p\) is not ordered</p>
+          <p>\(\mathbb{Q}_p\) is not comparable with \(\mathbb{R}\)</p>
+          <p>
+            \(x^2 = -1\) has a solution \(x \ \mathbb{Q}_p \iff p = 1 \) mod(4)
+          </p>
+        </div>
+        <div>
+          <h3>Bibliography</h3>
+          <ul>
+            <li><a href="https://www.youtube.com/watch?v=vdjYiU6skgE">Youtube: Introduction to p-adic Numbers*</a></li>
+            <li> <a href="https://www.youtube.com/watch?v=XFDM1ip5HdU">Youtube: What does it feel like to invent math?</a></li>
+            <li> <a href="https://en.wikipedia.org/wiki/Ostrowski%27s_theorem">Ostrowski's theorem</a></li>
+            <li> <a href="http://www.asiapacific-mathnews.com/03/0304/0001_0006.pdf">What are p-Adic Numbers? What are They Used for?</a></li>
+            <li> <a href="https://en.wikipedia.org/wiki/P-adic_number">p-adic Number</a></li>
+            <li> <a href="https://math.unm.edu/~nakamaye/padic.pdf">The p-adic topologies on \(\mathbb{Q}\)</a></li>
+            <li> <a href="https://www.math.uh.edu/~haynes/files/topgps5.pdf">The p-adic Numbers</a></li>
+            <li> <a href="https://ncatlab.org/nlab/show/p-adic+integer">p-adic integer</a></li>
+            <li> <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.81.2931&rep=rep1&type=pdf">A Tutorial on p-adic Arithmetic</a></li>
+            <li> <a href="http://mathworld.wolfram.com/p-adicNumber.html">p-adic Number</a></li>
+            <li> <a href="http://homepages.warwick.ac.uk/staff/J.E.Cremona/courses/MA257/ma257_ch5_large.pdf">p-ADIC NUMBERS</a></li>
+          </ul>
+          <p>* - my talk was in a large part inspired by this presentation.</p>
+        </div>
+    </article>
+  </main>
+  <footer></footer>
+</body>
+
+</html>

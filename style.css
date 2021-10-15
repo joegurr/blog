@@ -191,6 +191,14 @@ a:visited {
   color: #000000;
 }
 
+.under-construction {
+  align-items: center;
+  background-color: #ffc107;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+
 @media (prefers-color-scheme: dark) {
   .home a,
   a:visited {
