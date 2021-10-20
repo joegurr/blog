@@ -31,15 +31,16 @@
           <span style="color: grey">"... in mathematics you don't understand things. You just get used
             to them"</span><span>- John Von Neumann</span>
         </p>
-        <p>
-          This is a text version of a presentation I gave during my
-          undergraduate mathematics degree during a first course in topology. I
-          was lucky enough to do this as a reader course with Dr. Andrew Kepert,
-          and am very grateful for his guidance and support.
-        </p>
-        <p>My presentation was largely inspired by this <a href="https://www.youtube.com/watch?v=vdjYiU6skgE">youtube
-            video</a>. The creator does a much better job of saying what I'm trying to here. Any credits to this post
-          are surely due much more to them.</p>
+        <p>I wanted to write a simple introduction to the p-adic numbers, however in my research I came across this <a
+            href="https://www.youtube.com/watch?v=vdjYiU6skgE">youtube
+            video</a>, which does a better job than I ever could have.</p>
+        <p>I had started writing this up and had most of the same ideas in place before finding this video,
+          however I found the structure and approach of this video to be exemplary. I restructured what I had to be
+          in roughly the same order and I found that the content was almost identical.</p>
+        <p>I decided to continue writing this even though there is already an excellent resource on this in order to
+          practice my technical writing a little.</p>
+        <p>In any case, all credit to the merits of
+          this post should go to the video's creator Rokker815, while any defects are surely my own.</p>
         <p>
           I am going to walk you through a simplified construction of the p-adic
           numbers by showing the similarities to how the reals are constructed.
@@ -88,10 +89,8 @@
           The classic absolute value on \(\mathbb{Q}\) is that \(|x|\) is just
           \(x\) when \(x \in \mathbb{Q}_{\geq 0}\) and \(-x\) otherwise.
         </p>
-      </div>
-      <div>
-        <h3>Tools (cont)</h3>
-        <p><strong>Metric Space</strong>: given a set \(X\), a metric \(d\), is a "distance" function \(d: X \times X \rightarrow \mathbb{Q}_+\) which has the following properties:</p>
+        <p><strong>Metric Space</strong>: given a set \(X\), a metric \(d\), is a "distance" function \(d: X \times X
+          \rightarrow \mathbb{Q}_+\) which has the following properties:</p>
         <ul>
           <li>\(d(x,y) \geq 0\)</li>
           <li>\(d(x,y) = 0 \iff x = y\)</li>
@@ -121,7 +120,9 @@
       </div>
       <div>
         <h3>p-adic Absolute Value on Q</h3>
-        <p>For \(x\in\mathbb{Q}, x \neq 0\) we define the p-adic absolute value from the rationals to the non-negative rationals as \(|\cdot|_p : \mathbb{Q} \rightarrow \mathbb{Q}_+\), as \(|x|_p = |p^n\frac{g}{h}| = p^{-n}\) and \(|0|_p = 0\)</p>
+        <p>For \(x\in\mathbb{Q}, x \neq 0\) we define the p-adic absolute value from the rationals to the non-negative
+          rationals as \(|\cdot|_p : \mathbb{Q} \rightarrow \mathbb{Q}_+\), as \(|x|_p = |p^n\frac{g}{h}| = p^{-n}\) and
+          \(|0|_p = 0\)</p>
         <p>e.g.let \(p=7, x = \frac{147}{5}\) then you have \(|\frac{147}{5}|_7 = |7^2\frac{3}{5}|_7 = 7^{-2}\)</p>
         <p></p>
       </div>
@@ -130,16 +131,19 @@
           <h3>p-adic metric on Q</h3>
           <p>\(d_p : \mathbb{Q} \times \mathbb{Q} \rightarrow \mathbb{Q}_{\geq 0}\)</p>
           <p>\(d_p(x,y) : {| x - y |}_p\)</p>
-          <p>e.g. for \(p=5\) we claim that 627 and 2 are closer together than 3 and 2. \(d_5(657, 2) = |625|_5 = |5^3|_5 = 5^{-3}|\) and \(d_5(3,2) = |1|_5 = |5^0| = 1\).</p>
+          <p>e.g. for \(p=5\) we claim that 627 and 2 are closer together than 3 and 2. \(d_5(657, 2) = |625|_5 =
+            |5^3|_5 = 5^{-3}|\) and \(d_5(3,2) = |1|_5 = |5^0| = 1\).</p>
         </div>
         <div>
           <h3>Geometry of Open Balls</h3>
-          <p>Consider \((\mathbb{Q}, d_p)\). Then \(B(a,r) = \{x \in \mathbb{Q}: d(a,x) < r\}\). By the definition of \(| \cdot |_p\ r) will only take discrete values in \(\{p^n, n\in\mathbb{Z}\}\). This gives a very interesting geometric intepretation.</p>
-          <p>e.g.</p>
-          <figure>
-            <img src="./p-adics-images/3-adic-ball-geometry.png" alt="geometry of 3 adic balls" width="400" />
-            <figcaption>Consider the open balls of \(\mathbb{Q}, d_3\)</figcaption>
-          </figure>
+          <p>Consider \((\mathbb{Q}, d_p)\). Then \(B(a,r) = \{x \in \mathbb{Q}: d(a,x) < r\}\). By the definition of
+              \(| \cdot |_p\ r\) will only take discrete values in \(\{p^n, n\in\mathbb{Z}\}\). This gives a very
+              interesting geometric intepretation.</p>
+              <p>e.g.</p>
+              <figure>
+                <img src="./p-adics-images/3-adic-ball-geometry.png" alt="geometry of 3 adic balls" width="400" />
+                <figcaption>Consider the open balls of \(\mathbb{Q}, d_3\)</figcaption>
+              </figure>
         </div>
         <div>
           <h3>Cauchy Sequences</h3>
@@ -149,7 +153,7 @@
             Cauchy Sequence if for every real number \(\varepsilon\) there
             exists an \(N \in \mathbb{N}\) such that for every \(m,n > N\) you
             have \( d(x_m, x_n) < \varepsilon \) </p>
-            <p>Cauchy sequences allow us to use words like "eventually" and "arbitrarily" in a formal sense.</p>
+              <p>Cauchy sequences allow us to use words like "eventually" and "arbitrarily" in a formal sense.</p>
         </div>
         <div>
           <h3>Completeness</h3>
@@ -167,8 +171,15 @@
         <div>
           <h3>Construction Of The Reals</h3>
           <p>
-            One way to do this is to complete the metric space \((\mathbb{Q},
-            d)\)
+            As we've seen, the rationals have Cauchy sequences that do not converge.
+
+            What would happen if we were to "plug" these "missing" values? What we'd in fact be doing is "completing"
+            the rationals with respect to it's metric.
+
+            When you complete a field, it turns out that you get another field.
+
+            When you complete the rationals with respect to the regular absolute value metric, what we get is the reals!
+            i.e. the completion of \((\mathbb{Q}, d) = \mathbb{R}\)
           </p>
         </div>
         <div>
@@ -213,18 +224,22 @@
           <h3>Bibliography</h3>
           <ul>
             <li><a href="https://www.youtube.com/watch?v=vdjYiU6skgE">Youtube: Introduction to p-adic Numbers*</a></li>
-            <li> <a href="https://www.youtube.com/watch?v=XFDM1ip5HdU">Youtube: What does it feel like to invent math?</a></li>
+            <li> <a href="https://www.youtube.com/watch?v=XFDM1ip5HdU">Youtube: What does it feel like to invent
+                math?</a></li>
             <li> <a href="https://en.wikipedia.org/wiki/Ostrowski%27s_theorem">Ostrowski's theorem</a></li>
-            <li> <a href="http://www.asiapacific-mathnews.com/03/0304/0001_0006.pdf">What are p-Adic Numbers? What are They Used for?</a></li>
+            <li> <a href="http://www.asiapacific-mathnews.com/03/0304/0001_0006.pdf">What are p-Adic Numbers? What are
+                They Used for?</a></li>
             <li> <a href="https://en.wikipedia.org/wiki/P-adic_number">p-adic Number</a></li>
             <li> <a href="https://math.unm.edu/~nakamaye/padic.pdf">The p-adic topologies on \(\mathbb{Q}\)</a></li>
             <li> <a href="https://www.math.uh.edu/~haynes/files/topgps5.pdf">The p-adic Numbers</a></li>
             <li> <a href="https://ncatlab.org/nlab/show/p-adic+integer">p-adic integer</a></li>
-            <li> <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.81.2931&rep=rep1&type=pdf">A Tutorial on p-adic Arithmetic</a></li>
+            <li> <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.81.2931&rep=rep1&type=pdf">A Tutorial
+                on p-adic Arithmetic</a></li>
             <li> <a href="http://mathworld.wolfram.com/p-adicNumber.html">p-adic Number</a></li>
-            <li> <a href="http://homepages.warwick.ac.uk/staff/J.E.Cremona/courses/MA257/ma257_ch5_large.pdf">p-ADIC NUMBERS</a></li>
+            <li> <a href="http://homepages.warwick.ac.uk/staff/J.E.Cremona/courses/MA257/ma257_ch5_large.pdf">p-ADIC
+                NUMBERS</a></li>
           </ul>
-          <p>* - my talk was in a large part inspired by this presentation.</p>
+          <p>* - this post is at best another way to absorb the information in this video</p>
         </div>
     </article>
   </main>
