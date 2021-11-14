@@ -182,7 +182,7 @@ pre > code {
 }
 
 .pages li::marker {
-  content: attr(year) " - ";
+  content: attr(month-year) " - ";
   color: #838383;
 }
 
