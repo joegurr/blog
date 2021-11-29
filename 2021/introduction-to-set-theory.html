@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to Set Theory</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>
+            <a href="/" rel="home">Joe Gurr</a>
+        </h1>
+    </header>
+    <main>
+        <article>
+            <header>
+                <h2>Introduction to Set Theory</h2>
+                <time date="2021-11-29">Novemeber 2021</time>
+            </header>
+            <div>
+                <h3>Intro</h3>
+                <p>
+                    <span style="color: grey">
+                        "Every mathematician agrees that every mathematician must know some set theory;
+                        the disagreement begins in trying to decide how much is some."
+                    </span>
+                    <span>- Paul Halmos</span>
+                </p>
+            </div>
+            <div>
+                <h3>What is a set</h3>
+
+                <p>A set is a collection of "things".</p>
+
+                <p>What "things" you may ask? Almost anything you'd like ...</p>
+
+                <p>A collection of three colours, red, blue, and yellow is a set. So is the collection of the names of
+                    capital cities of Australia (or the world for that matter).</p>
+
+                <p>We write a set by enclosing the collection of "things" inside \(\{\text{brackets}\}\) with commas
+                    separating the different objects.</p>
+
+                <p>e.g. \(\{\text{North}, \text{East}, \text{South}, \text{West}\}\) is a set</p>
+
+                <p>Often we consider sets that contain numbers. Other times we consider sets that contain sets!</p>
+
+                <p>e.g. \(\{17, 42, 108\}\) is also a set</p>
+            </div>
+            <div>
+                <h3>Properties of sets</h3>
+                <p>Sets do not care about multiples of the same "thing", nor do they care about order</p>
+
+                <p>e.g. \(\{\text{cat}, \text{dog}\}\) is the same as \(\{\text{cat}, \text{dog}, \text{cat}\}\)</p>
+
+                <p>e.g. \(\{1, 2, 3\}\) is the same as \(\{3,2,1\}\)</p>
+
+                <p>We use the symbol \(\in\) to represent "membership" to a set.</p>
+
+                <p>We write \(1 \in \{1,2,3\}\) to say, 1 is a "member of" (or "belongs to")
+                    the set \(\{1, 2, 3\}\). \(4 \notin \{1,2,3\}\).</p>
+
+                <p>We usually denote a set with a capital letter (usually starting at the start of the alphabet).</p>
+
+                <p>We generally denote members of the set with a lower case letter (usually from the end of the
+                    alphabet).</p>
+
+                <p>For example you will often see something like. Let \(x\) be a member of the set \(A\)</p>
+
+                <p>If all the members in one set, say set \(A\) , also belong to another set, say set \(B\) ,
+                    we say that \(A\) is a subset of \(B\) We write this as \(A \subseteq B\)</p>
+
+                <p>\(B\) may very well contain more "things" than \(A\)</p>
+
+                <p>For example the set \(\{1,2,3\} \subseteq \{\cdots, -2, -1,0,1,2,\cdots\}.\)</p>
+            </div>
+            <div>
+                <h3>Some famous sets</h3>
+                <ul>
+                    <li>The counting numbers \(\{0, 1, 2, 3, 4, 5, \cdots\}\),
+                        otherwise known as the Natural Numbers, which we denoted by \(\mathbb{N}\)</li>
+                    <li>The Integers \(\{\cdots, -2, -1, 0, 1, 2, \cdots\}\) denoted by \(\mathbb{Z}\)</li>
+                    <li>The Rational Numbers, i.e. those numbers that can be expressed as a ratio of two integers,
+                        denoted
+                        by \(\mathbb{Q}\)</li>
+                    <li>The Real Numbers, denoted by \(\mathbb{R}\)</li>
+                    <li>The set with no members \(\{\}\), otherwise known as the Empty Set, denoted by \(\emptyset\)
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3>What can we do with sets</h3>
+
+                <p>Create a new set by combining the members of other sets. We call this the <strong>Union</strong> of
+                    sets.
+                    We write the union of two sets \(A\) and \(B\) as \(A \cup B\).</p>
+
+                <p>e.g. Let \(A = \{a, b, c\}\) and let \(B = \{x, y\}\), then \(A \cup B = \{a, b, c, x, y\}\)</p>
+
+
+                <p>Create a new set by including only the common members of other sets. We call this the
+                    <strong>Intersection</strong> of sets.
+                </p>
+
+                <p>We write the intersection of two sets \(C\) and \(D\) as \(C \cap D\).</p>
+
+                <p>e.g. Let \(C = \{-2, 0, 2\}\) and let \(D = \{-1, 0, 1\}\), then \(C \cap D = \{0\}\)</p>
+
+                <p>Count them ... well, kind of, ... We call this the <strong>Cardinality</strong> of a set.</p>
+                <p>Formally it is not really a "count", but we will get to that another day!</p>
+                <p>The number of elements (the Cardinality) of a set \(A\) is is denoted by \(|A|\)</p>
+
+                <p>e.g. Let \(A = \{a, b, c\}\), then \(|A| = 3\).</p>
+            </div>
+            <div>
+                <h3>Generating rules</h3>
+                <p>We often write a set explicitly, by listing out all of the elements in the set.</p>
+
+                <p>This doesn't work when we want to write out infinite sets.</p>
+
+                <p>In these cases we use a "generating rule" (or rules) to define how a set is generated.</p>
+
+                <p>For example, we could define the even integers the following way: \(\{2x \text{ such that } x \in
+                    \mathbb{Z}\}\)</p>
+            </div>
+            <div>
+                <h3>Some of the big results of set theory</h3>
+                <p>I'd like to end this post by briefly bringing up some of the most famous results of Set Theory.
+                    I want to give the beginning of an answer to the question "Why do we care about sets?"</p>
+
+                <ul>
+                    <li>Formal ways of building the real numbers (via Dedekind cuts for example)</li>
+                    <li>There are more real numbers than natural numbers (Cantor's Diagonalisation Argument)</li>
+                    <li>Mathematics doesn't play as nice as we would have liked (Godel's Incompleteness Theorems)</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Further Reading</h3>
+                <p>I'd recommend the following two resources!</p>
+                <ul>
+                    <li><a href="https://plato.stanford.edu/entries/set-theory/">Stanford Encyclopedia of Philosophy -
+                            Set Theory</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Naive_Set_Theory_(book)">Naive Set Theory by Paul
+                            Halmos</a></li>
+                </ul>
+            </div>
+        </article>
+    </main>
+    <footer></footer>
+</body>
+
+</html>
