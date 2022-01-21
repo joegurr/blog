@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ordinal Numbers</title>
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>
+      <a href="/" rel="home">Joe Gurr</a>
+    </h1>
+  </header>
+  <main>
+    <article>
+      <header>
+        <h2>Transfinite Induction</h2>
+        <time date="2022-01-13">January 2022</time>
+      </header>
+      <div>
+        <p>
+          <span style="color: grey">
+            "God created infinity, and man, unable to understand infinity, had to invent finite sets."
+          </span>
+          <span>- Gian Carlo Rota</span>
+        </p>
+      </div>
+      <p>I took a fantastic set theory course in 2015 with the wonderful Paul Vrbik. I took this course in the first
+        year of my undergraduate studies, and was amazed by it. It was in this course I really learned how to prove
+        mathematical statements. Transfinite Induction, the last topic, sadly
+        had to be skipped due to a lack of time. I started writing this blog post as a way of forcing myself to learn
+        about it.</p>
+      <p>The concept of induction is very familiar to me. Over the set of Natural numbers, if a proposition \(P\) is
+        true
+        for \(0\), and if \(P\) is true for some \(x \in \mathbb{N} \) implies that \(P\) is true for the successor of
+        \(x\),
+        \(S(x) = x + 1\), then \(P\) is true for all Natural numbers.</p>
+      <p>It is the word transfinite that scared me a little. It comes from our friend Georg Cantor. Cantor took very
+        deep dives into the concept of infinity. It was Cantor
+        who discovered that not all infinites are the same size.</p>
+      <p>Cantor came up with the concept of the Absolute Infinite, denoted \(\Omega\), which can be thought of as a
+        number that is bigger than any conceivable or inconceivable quantity. Any infinity smaller than this is called
+        transfinite. The cardinalities of Natural Numbers, or Real numbers, or of any set are transfinite.</p>
+      <p>Looking at Wikipedia the definition of transfinite induction seems straightforward enough</p>
+      <p>"Transfinite Induction is an extension of mathematical induction to well-ordered sets"</p>
+      <p>I needed to go back to my notes and remind myself of the formal definition of a well-ordered set. A
+        well-ordered set is a set with a
+        relation in which any two elements can be "ordered" (i.e. one is "before" or "after" the other) by the relation.
+      </p>
+      <p>So I guess we come to the question, which sets are well-ordered?. I never intended to get into a discussion
+        about the Axiom of Choice in this post, but here we are.
+        It turns out the the Axiom of Choice is equivalent to the Well-ordering theorem which states that every set can
+        be well ordered. Thus transfinite induction can be applied on any set (i.e. you take the least element of the
+        set, which you are guaranteed by the well-order, then take the next in the order and so on).
+      </p>
+      <p>
+        This means we can perform induction over the reals, or the complex numbers. I am yet to find an easily
+        digestible use of
+        transfinite induction in practice. Through my reading I found an interesting stack overflow post which suggested
+        that prior to
+        Zorn's Lemma, there were many more uses of Transfinite Induction in proofs, however this lemma abstracts this
+        away.
+      </p>
+    </article>
+  </main>
+  <footer></footer>
+</body>
+
+</html>
