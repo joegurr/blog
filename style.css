@@ -18,10 +18,6 @@ html {
   }
 }
 
-.need-light-background {
-  background-color: #ffffff;
-}
-
 body {
   margin: 1.2em;
   font-size: 1rem;
@@ -38,8 +34,7 @@ header {
 }
 
 img,
-picture,
-iframe {
+picture {
   display: block;
   max-width: 100%;
   margin: 0 auto;
@@ -50,15 +45,11 @@ picture {
   height: auto;
 }
 
-iframe {
-  width: 100%;
-}
-
 ul,
 ol {
   margin-top: 0;
   padding-top: 0;
-  padding-left: 2em;
+  padding-left: 5em;
 }
 
 h1 {
@@ -178,16 +169,15 @@ pre > code {
 
 .pages {
   margin: 0;
-  padding-inline-start: 6ch;
+  padding-inline-start: 3ch;
 }
 
 .pages li {
   padding-block-end: 0.5rem;
 }
 
-.pages li::marker {
-  content: attr(month-year) " - ";
-  color: #838383;
+ol.pages {
+  list-style-type: none;
 }
 
 .home a,
