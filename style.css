@@ -199,3 +199,20 @@ a:visited {
     color: #ffffff;
   }
 }
+
+.proof {
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.theorem {
+  border: 1px solid black;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+.definition {
+  border: 1px solid black;
+  padding: 1em;
+  margin-bottom: 1em;
+}
