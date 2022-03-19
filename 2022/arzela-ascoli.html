@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arzelà Ascoli</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>
+            <a href="/" rel="home">Joe Gurr</a>
+        </h1>
+    </header>
+    <main>
+        <article>
+            <header>
+                <h2>Arzelà-Ascoli</h2>
+                <time date="2022-03-11">March 2022</time>
+            </header>
+            <div>
+                <p><span style="color: grey">"A great many propositions in analysis are trivial for finite sets, true and
+                    reasonably simple for infinite compact sets; and either false or extremely
+                    difficult to prove for noncompact sets."</span> <span>- Edwin Hewitt</span></p>
+            </div>
+            <div>
+                <p>The Arzelà-Ascoli theorem is an important result in mathematical analysis.</p>
+                <p>In this post we will be stating and proving the general form of the theorem. We will do this by establishing three lemmas and combining them to obtain the result.</p>
+            </div>
+            <div class="theorem">
+                <h4>Arzelà-Ascoli Theorem</h4>
+
+                <p>Let \(\mathcal{F}\) be an equicontinuous family from a separable metric space \((X, d_X)\) to a
+                complete metric space \((Y, d_Y)\) such that \(\overline{\{f_n(x) : 0 \leq n < \infty \}}\) is compact for
+                all \(x\). </p>
+
+                <p>Then there is a subsequence \(\{f_{n_j}\}_{j=1}^\infty\) converging pointwise to a
+                continuous function and the convergence is uniform on compact subsets. </p>
+
+                <h5>Corollary</h5>
+                <p>Let \(\{f_n :
+                [0,1] \to \mathbb{R} \}\) be uniformly bounded and equicontinuous. Then some subsequence
+                converges in \(C[0,1]\).</p>
+            </div>
+            <div>
+                <p>The Arezlà Ascoli theorem is so important because it allows us to characterise compact sets of continuous functions.</p>
+                <p>It has applications in the theory of ordinary and partial differential equations, in probability theory, in complex analysis, and in harmonic analysis.</p>
+                <p>One of the key assumptions in the hypothesis is that of equicontinuity.</p>
+                <p>This is a concept I hadn't seen before learning about the Arzelà-Ascoli theorem.</p>
+                <div class="definition">
+                    <h4>Equicontinuity</h4>
+                    <p>Let \((X,d_x)\), \((Y,d_Y)\) be metric spaces, \(C(X,Y)\) be the space of continuous functions from \(X\) to \(Y\).</p>
+                    <p>A family \(\mathcal{F} \subseteq C(X,Y)\) of functions is equicontinuous if</p>
+                    <p>\(\forall \epsilon > 0, \forall x,y \in X, \exists \delta > 0\) such that \(d_X(x,y) < \delta \implies d_Y(f(x), f(y)) < \epsilon\) \(\forall f \in \mathcal{F}\)</p>
+                </div>
+                <p>In words, this means that for an equicontinuous family, the value of \(\delta\) depends on \(\epsilon\) and \(x\) but not on \(f \in \mathcal{F}\).</p>
+                <p>Another way to explain equicontinuity is that the same choice of \(\delta\) will work on all \(f \in \mathcal{F}\).</p>
+                <p></p>
+            </div>
+            <div>
+                <p>Now we will state and prove some lemmas required for proving the theorem.</p>
+            </div>
+            <div>
+                <div class="theorem">
+                    <h4>Lemma I</h4>
+
+                    <p>Let \(\{f_n: X \to Y\}_{n=1}^\infty\) where \(Y\) is complete be equicontinuous and assume
+                        that for some \(D \subseteq X\) dense that \(\{f_n(x)\}_{n=1}^\infty\) converges for \(x \in D\). Then
+                        \(f_n(x)\) converges \(\forall x \in X\) and \(f(x) = \lim f_n(x)\) is continuous.</p>
+                </div>
+
+                <div class="proof">
+                <h5>Proof</h5>
+                <p>It suffices to show that \(\{f_n(x)\}_{n=1}^\infty\) is Cauchy for all \(x \in X\).</p>
+                <p>Well, what do we know?</p>
+                <p>By equicontinuity we have \(\forall \epsilon > 0\)  \(\exists \delta \) such that \(d_x(x,y) < \delta \implies d_Y(f_n(x), f_n(y)) < \frac{\epsilon}{3}\)</p>
+                <p>We also know</p>
+                <p>\(\forall x\) \(\exists y \in D\) such that \(d_X(x,y) < \delta\) so we have</p>
+                <p>\(d_Y(f_n(x), f_m(x)) < d_Y(f_n(x), f_n(y)) + d_Y(f_n(y), f_m(y)) + d_Y(f_m(y), f_m(x))\)</p>
+                <p>The first and third terms are bounded by \(\frac{\epsilon}{3}\) by equicontinuity, and the second term is Cauchy in \(D\), so with a large enough \(N\) we can also bound it by \(\frac{\epsilon}{3}\).</p>
+                <p>Thus we have \(d_Y(f_n(x), f_m(x)) < \epsilon\), and hence that \(\{f_n(x)\}_{n=1}^\infty\) is Cauchy in \(Y\) for all \(x \in X\).</p>
+                <p>We now know that \(f = \lim f_n\) exists, we must now show that it is continuous.</p>
+                <p>Let \(\epsilon > 0, x \in X\). We have a \(\delta>0\) such that \(d_X(x,y) < \delta \implies (d_Y(f_n(x), f_n(y)) < \frac{\epsilon}{2} \forall n)\)</p>
+                <p>We also know that \(d_Y\) is continuous, so we have</p>
+                <p>\(\frac{\epsilon}{2} \geq \lim_{n\to \infty}d_y(f_n(x), f_n(y)) = d_Y(f(x),f(y))\)</p>
+                <p>So \(f\) is continuous.\(\blacksquare\)</p>
+                </div>
+            </div>
+            <div>
+                <div class="theorem">
+                <h4>Lemma II</h4>
+
+                <p>Let \(\{f_n: X \to Y\}_{n=1}^\infty\) be an equicontinuous family, and assume \(\exists f :
+                    X \to Y\) such that \(f_n(x) \to f(x)\) \(\forall x \in X\). If \((X, d_X)\) is compact
+                    then \(f_n \to f\) uniformly.</p>
+                </div>
+                <div class="proof">
+                    <h5>Proof</h5>
+                    <p>Since \(X\) is compact \(\{f_n\} \cup \{f\}\) is an equicontinuous family.</p>
+                    <p>Let \(\epsilon > 0\), choose \(\delta\) such that:</p>
+                    <p>\(d_X(x,y) < \delta\) implies both \(d_Y(f_n(x), f_n(y)) < \frac{\epsilon}{3}\) and \(d_Y(f(x), f(y)) < \frac{\epsilon}{3}\)</p>
+                    <p>Let \(\{B_X(y, \delta)\}_{y\in X}\) be an open cover of \(X\) that admits a finite sub cover \(\bigcup_{i=1}^m B_X(y_i, \delta)\).</p>
+                    <p>Because we have a finite sub cover, every \(x\in X\) is within \(\delta\) of some \(y_i\).</p>
+                    <p>For each \(i\) there exists an \(N_i\) such that for all \(n\) greater than \(N_i\) we have \(d_Y(f_{n}(y_i), f(y_i)) < \frac{\epsilon}{3}\)</p>
+                    <p>Let \(N \geq \max_{i=1,...,m}N_i\) then we have</p>
+                    <p>\(d_Y(f_n(x), f(x)) \leq d_Y(f_n(x), f_n(y_i)) + d_Y(f_n(y_i), f(y_i)) + d_Y(f(y_i), f(x)) < \epsilon\)</p>
+                    <p>Thus the sequence is uniformly convergent.\(\blacksquare\)</p>
+                </div>
+            </div>
+            <div>
+                <div class="theorem">
+                <h4>Lemma III</h4>
+                <p>
+                    Let \(D\) be a countable set, \(\{f_n : D \to Y\}\) where \(Y\) is complete and assume
+                    that
+                    \(\forall x \in D\) the set \(\overline{\{f_n(x) : 1 \leq n < \infty \}}\) is compact. Then there
+                        exists a subsequence \(\{f_{n_j}\}_{j=1}^\infty\) convergent on all \(D\) </p>
+                </div>
+                <div class="proof">
+                <h5>Proof</h5>
+                <p>Since \(D\) is countable, let \(q_1, q_2, q_3, ... \) be an enumeration of the elements of \(D\).</p>
+                <p>\(\overline{\{f_n(x) : 1 \leq n < \infty \}}\) is compact for each \(q_i\), in particular for \(q_1\).</p>
+                <p>Sequential and 'regular' compactness are equivalent in a metric space, so we know that there exists a sequence of functions \(\{f_{n,1}\}_{n=1}^\infty\), such that \(\{f_{n,1}(q_1)\}_{n=1}^\infty\) converges.</p>
+                <p>Since \(\overline{\{f_{n,1}(x) : 1 \leq n < \infty \}}\) is a closed subset of a compact set, it is compact. Hence it also admits convergent sequences, in particular it admits a convergent sequence for \(q_2\).</p>
+                <p>That is, there exists a sequence of elements \(\{f_{n,2}\}_{n=1}^\infty\), such that \(\{f_{n,2}(q_2)\}_{n=1}^\infty\) converges.</p>
+                <p>The crucial thing to note, is that \(\{f_{n,2}\}_{n=1}^\infty\) is a subsequence of \(\{f_{n,1}\}_{n=1}^\infty\).</p>
+                <p>This holds precisely because of the aforementioned fact that \(\overline{\{f_{n,1}(x) : 1 \leq n < \infty \}}\) is compact.</p>
+                <p>Thus we get the following diagram.</p>
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <p>\(f_{1,1}\)  &nbsp;&nbsp; \(f_{2,1}\) &nbsp;&nbsp;  \(f_{3, 1}\) &nbsp;&nbsp;  \(f_{4, 1}\)  &nbsp;&nbsp; \(f_{5,1}\)  &nbsp;&nbsp; \(\cdots\)</p>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <p>\(f_{1,2}\)  &nbsp;&nbsp; \(f_{2,2}\) &nbsp;&nbsp;  \(f_{3, 2}\) &nbsp;&nbsp;  \(f_{4, 2}\)  &nbsp;&nbsp; \(f_{5,2}\)  &nbsp;&nbsp; \(\cdots\)</p>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <p>\(f_{1,3}\)  &nbsp;&nbsp; \(f_{2,3}\) &nbsp;&nbsp;  \(f_{3, 3}\) &nbsp;&nbsp;  \(f_{4, 3}\)  &nbsp;&nbsp; \(f_{5,3}\)  &nbsp;&nbsp; \(\cdots\)</p>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <p>\(f_{1,4}\)  &nbsp;&nbsp; \(f_{2,4}\) &nbsp;&nbsp;  \(f_{3, 4}\) &nbsp;&nbsp;  \(f_{4, 4}\)  &nbsp;&nbsp; \(f_{5,4}\)  &nbsp;&nbsp; \(\cdots\)</p>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <p>\(\vdots\)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \(\vdots\)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \(\vdots\)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \(\vdots\)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; \(\vdots\)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                </div>
+                <p>The important things to note about this diagram is that the \(i\)th row converges when evaluated at any point \(q_1, q_1, ..., q_i \in D\), and that each row is a subsequence of the row above.</p>
+                <p>Remembering the goal is to show that there exists a subsequence that converges on all of \(D\) we take the sequence formed by the diagonal entries of the above diagram, that is, take \(\{f_{n,n}\}_{n=1}^\infty\).</p>
+                <p>This subsequence converges for \(q_1\), since \(\{f_{n,n}\}_{n=1}^\infty\) is a subsequence of \(\{f_{n,1}\}_{n=1}^\infty\) by definition.</p>
+                <p>\(\{f_{n,n}\}_{n=1}^\infty\) converges for \(q_i\) because all but a finite number of elements of \(\{f_{n,n}\}_{n=1}^\infty\) are also in \(\{f_{i,n}\}_{n=1}^\infty\), and a convergent sequence with finitely many elements added to the beginning still converges.</p>
+                <p>Thus it is exactly this diagonal subsequence that is convergent on all of \(D\). \(\blacksquare\)</p>
+                </div>
+            </div>
+            <div>
+                Finally, we will complete the proof of Arzelà-Ascoli.
+                <div class="proof">
+                    <h5>Proof (Arzelà-Ascoli)</h5>
+                    <p>Let \(C\) be a countable dense subset of \((X, d_x)\).</p>
+                    <p>By Lemma III there exists a subsequence \(\{f_{n_j}\}_{j=1}^\infty\) that is convergent on all of \(C\).</p>
+                    <p>By Lemma I we can extend the convergence of \(\{f_{n_j}\}_{j=1}^\infty\) to all of \(X\).</p>
+                    <p>By Lemma II we get uniformity on compact subsets.\(\blacksquare\)</p>
+                </div>
+                <p>This completes the proof of the general statement of the Arzelà-Ascoli Theorem. I hope you've enjoyed learning about it!</p>
+            </div>
+        </article>
+    </main>
+    <footer></footer>
+</body>
+</html>
