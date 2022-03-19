@@ -4,8 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ordinal Numbers</title>
+  <title>Ordinal and Cardinal Numbers</title>
   <link rel="stylesheet" href="../style.css" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -20,17 +22,95 @@
         <h2>Ordinal and Cardinal Numbers</h2>
         <time date="2022-01-13">January 2022</time>
       </header>
-      <p>
-       Right now I know next to nothing about the ordinal or Cardinal numbers. I am posting this article
-       to serve as an impetus for me to learn about them and post something soon!
-      </p>
-      <p>
-        <p>Ordinal numbers tell us an item's position in a list, for example: first, second, third, fourth, etc.</p>
-        <p>Cardinal Numbers tells us the size of the list, it is a measure of magnitude.</p>
-      </p>
+      <div>
+        <p><span style="color: grey">“If people do not believe that mathematics is simple, it is only because they do not realize how complicated life is.”</span> <span>- Jon von Neumann</span></p>
+      </div>
+      <div>
+        <p>
+          When I begun to write this post I knew next to nothing about the ordinal or Cardinal numbers.
+          They seemed to keep popping up on me, and I never quite understood the meaning of \(\omega\) and \(\aleph\).
+          This post is intended to fix that!
+        </p>
+      </div>
+      <div>
+        <h3>Informally</h3>
+        <p>Ordinal numbers tell us an item's position in a sequence, for example, first, second, third, fourth, ... Each
+          natural number is an ordinal number.</p>
+        <p>Cardinal numbers tells us the size of a sequence, it is a measure of magnitude, for example, the list [11,
+          43, 8] is 3
+          elements long. Each natural number is also a cardinal number. They are different creatures though!</p>
+      </div>
+      <div>
+        <h3>Formally</h3>
+        <h4>Ordinals</h4>
+        <p>Now things start to get a little messy. There seem to be many definitions of Ordinal numbers.</p>
+
+        <p>It seems to be the case that the now standard definition of the Ordinals is due to Von Neumann (at the age of
+          19!!). It is as follows:</p>
+
+        <div class="definition">
+          <h4>Ordinal Number</h4>
+          <p>A set S is an ordinal if and only if S is strictly well-ordered with respect to set membership and every
+            element of S is also a subset of S.</p>
+        </div>
+
+        <p>Remembering the construction of the natural numbers according to Peano's axioms, we have that each of the
+          rows below satisfies the definition to be an ordinal number.</p>
+        <div>
+          \( \begin{align}
+          0 &= \{\} && = \emptyset \\
+          1 &= \{0\} && = \{\emptyset\} \\
+          2 &= \{0,1\} && = \{\emptyset,\{\emptyset\}\} \\
+          3 &= \{0,1,2\} && = \{\emptyset,\{\emptyset\},\{\emptyset,\{\emptyset\}\}\} \\
+          4 &= \{0,1,2,3\} && =
+          \{\emptyset,\{\emptyset\},\{\emptyset,\{\emptyset\}\},\{\emptyset,\{\emptyset\},\{\emptyset,\{\emptyset\}\}\}\}
+          \\
+          \end{align}
+          \)
+        </div>
+
+        <p>Colloquially "each ordinal is the well-ordered set of all smaller ordinals."</p>
+
+        <h4>Cardinal numbers</h4>
+        <p>There's not as much confusion here, however there is a little controversy depending on whether or not you're
+          willing to accept the Axiom of Choice. If the axiom of choice is not assumed, then a different approach is
+          needed.</p>
+        <div class="definition">
+          <h4>Cardinal Number</h4>
+          <p>Assuming the axiom of choice, the cardinality of a set \(X\) is the least ordinal number \(\alpha\) such
+            that there is a bijection between \(X\) and \(\alpha\).</p>
+        </div>
+        <p>The above definition is again due to von Neumann, and is known as the von Neumann cardinal assignment.</p>
+        <p>Each ordinal is associated with one cardinal, called its cardinality</p>
+      </div>
+
+      <div>
+        <h3>Some Famous Known Cardinal and Ordinal Numbers</h3>
+        <p>After all the natural numbers comes the first infinite ordinal, \(\omega\). This corresponds to the cardinal
+          \(\aleph_0\), the "size" of the natural numbers</p>
+        <p>Next comes \(\omega + 1, \omega + 2, \omega + 3, \cdots , 2\omega = \omega + \omega, \cdots \)</p>
+        <p>After all of these comes the first uncountable ordinal, \(\omega_1\). It's associated cardinal is
+          \(\aleph_1\), the "size" of the real numbers.</p>
+        <p>The continuum hypothesis asks whether there is a cardinal between \(\aleph_0\) and \(\aleph_1\). It turns out
+          this statement is independent of the typical formulation of mathematics (the Zermelo-Fraenkel Axioms of set
+          theory).</p>
+        <p>This means that either the answer to the continuum hypothesis can be added as an axiom without ruining the
+          consistency of Zermelo-Fraenkel.</p>
+        <p>The ordinal \(\epsilon_0\) is the limit of the sequence \(0, 1, \omega, \omega^\omega,
+          \omega^{\omega^\omega}, \cdots\).</p>
+      </div>
+      <div>
+        <h3>Conclusion</h3>
+        <p>I have barely scratched the surface here. There seems to have been a lot of work done in this area of
+          mathematics in the past, but not so much anymore.</p>
+        <p>I'm not really sure what is happening here today, I remember reading in John H. Conway's biography that it
+          was hypothesised that major results would follow when the theory of ordinals and infinitesimals where combined
+          (as was done by Conway's Surreal Number system). To my <strong>VERY</strong> limited knowledge, this hasn't
+          happened.</p>
+      </div>
     </article>
   </main>
   <footer></footer>
 </body>
-    <!-- https://www.ias.edu/ideas/2011/kennedy-continuum-hypothesis -->
+
 </html>
