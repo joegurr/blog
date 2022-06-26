@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>End Of Line Characters</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>
+            <a href="/" rel="home">Joe Gurr</a>
+        </h1>
+    </header>
+    <main>
+        <article>
+            <header>
+                <h2>End Of Line Characters</h2>
+                <time date="2022-06-26">June 2022</time>
+            </header>
+            <div>
+                <p>
+                    <span style="color: grey">
+                        "This Unicode technical specification is extremely dull reading ... but it does have many
+                        interesting characters."
+                    </span>
+                </p>
+            </div>
+            <div>
+                <p>I don't know enough about end of line characters. I'm trying though! I've ready Joel Spolsky's
+                    article <a
+                        href="https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/">The
+                        Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and
+                        Character Sets (No Excuses!)</a> twice this week and have yet to fully commit it all to memory.
+                </p>
+                <p>This week at work I had an issue with end of line characters. Basically I'm working with an
+                    enterprise document generation platform that accepts data in whatever form you'd like, transforms
+                    it, and produces a nice pretty output.</p>
+                <p>For this particular job we were sent an xlsx file, for this job our software is programmed to accept
+                    csv files, so I had to convert one file format into another. Easy enough.</p>
+                <p>I don't have a microsoft account on my machine (because I don't need one), so this involved me
+                    opening up the spreadsheet in an unlicensed version of Excel and copying the data into a text editor
+                    and running a program like sed over it to reformat it. Pretty simple.</p>
+                <p>When the data get's complex sometimes I have to open the xlsx file with Mac's Numbers and export to a
+                    csv from there.</p>
+                <p>I hunted a bug for about 2 hours this week simply because the export function from Mac's Numbers and
+                    the 'reformat in a text editor' method resulted in different end of line encodings.</p>
+                <p>I'm not going to make that mistake again ...</p>
+                <p>I'm learning a lot about how different tools (Windows and Microsoft) serve different purposes to
+                    those I'm used to. I'm not sure how much I like using these tools, but I'm glad to be exposed to
+                    them.</p>
+            </div>
+        </article>
+    </main>
+    <footer></footer>
+</body>
+
+</html>
