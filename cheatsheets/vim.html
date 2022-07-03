@@ -20,6 +20,69 @@
         <article>
             <header>
                 <h2>Vim</h2>
+                <div>
+                    <h3>Buffers</h3>
+                    <p>A buffer directly matches an open file in memory (i.e. the content of a tab in a standard IDE).
+                    </p>
+                    <p>The big difference is that when you close a tab in a standard IDE you close the file as well. Not
+                        in Vim, if you close a window containing a buffer, the buffer is still there, hidden.</p>
+                    <p>A buffer can be in one of three states:</p>
+                    <ol>
+                        <li><strong>active</strong> - displayed in a window</li>
+                        <li><strong>hidden</strong> - not displayed, but it exists and the file is still open</li>
+                        <li><strong>inactive</strong> - not displayed and is empty</li>
+                    </ol>
+                    <p><code>:buffers</code> of <code>:ls</code> lists all of the buffers</p>
+                    <p>To navigate through the buffer list:</p>
+                    <ul>
+                        <li><code>:buffer {id or name}</code></li>
+                        <li><code>:bnext</code> or <code>:bn</code></li>
+                        <li><code>:bprev</code> or <code>:bp</code></li>
+                        <li><code>:bfirst</code> or <code>:bf</code></li>
+                        <li><code>:blast</code> or <code>:bl</code></li>
+                    </ul>
+                    <p>Buffers are created automatically if you create a window. You can also used
+                        <code>:badd {filename}</code>.</p>
+                    <p><code>:bdelete {id or name}</code>, <code>:m,n bdelete</code>, <code>%bdelete</code> are all ways
+                        to delete buffers.</p>
+                </div>
+                <div>
+                    <h3>Windows</h3>
+                    <p>A window in vim is nothing more than a space you can use to display the content of a buffer.
+                        Don't forget - when you close the window the buffer stays open.</p>
+
+                    <p>To create windows you can use the <code>:new</code> command or:</p>
+                    <ul>
+                        <li><code>CTRL+W s</code> split current window horizontally</li>
+                        <li><code>CTRL+W v</code> split current window vertically</li>
+                        <li><code>CTRL+W n</code> slit current wino horizontally and edit a new file</li>
+                    </ul>
+                    <p>To move cursor from one window to another you can use <code>CTRL+W j,k,h,l</code></p>
+                    <p>To move windows:</p>
+                    <ul>
+                        <li><code>CTRL+W r</code> rotate the windows</li>
+                        <li><code>CTRL+W x</code> exchange with the next window</li>
+                    </ul>
+
+                    <p>Resizing windows:</p>
+                    <ul>
+                        <li><code>CTRL+W =</code> equal size</li>
+                        <li><code>CTRL+W -</code> decrease height</li>
+                        <li><code>CTRL+W +</code> increase height</li>
+                        <li><code>CTRL+W &gt;</code> decrease width</li>
+                        <li><code>CTRL+W &lt;</code> increase width</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Tabs</h3>
+                    <p>A buffer is an open file, a window is the container for an active buffer. A tab is a container
+                        for a bunch of windows. It is a very different concept to that of a tab in a standard IDE.</p>
+                    <p><code>:tabnew</code> or <code>tabe</code> new tab</p>
+                    <p><code>:tabclose</code> or <code>:tabc</code> close tab</p>
+                    <p><code>:tabonly</code> or <code>:tabo</code> close every other tab</p>
+                    <p><code>gt</code> go to next tab</p>
+                    <p><code>gT</code> go to previous tab</p>
+                </div>
             </header>
         </article>
     </main>
