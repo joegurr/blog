@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SSH</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>
+            <a href="/" rel="home">Joe Gurr</a>
+        </h1>
+    </header>
+    <main>
+        <article>
+            <header>
+                <h2>SSH</h2>
+            </header>
+            <div>
+                <p>The ssh protocol is based on the client-server model, i.e. an ssh client must initiate an ssh session with an ssh server</p>
+                <p>Most of the connection setup is conducted by the client.</p>
+                <p>Public key cryptography is used to verify the identity of the ssh server, and then symmetric key encryption and hashing algorithms are used to maintain data transmission in cyphertext.</p>
+                <p>The steps involved in creating an ssh session are:</p>
+                <ol>
+                    <li>Client connects to server to initiate a connection</li>
+                    <li>The server responds by sending the client a public cryptographic key</li>
+                    <li>The client is able to authenticate the server by comparing this host key against a local database or by receiving the verification of a Certified Authority</li>
+                    <li>The client then shares their public key, a negotiation begins, and if successful a secure open channel will be open for the client</li>
+                    <li>The user, through their client logs into the server</li>
+                    <li>New, ephemeral keys are generated and used to encrypt ssh session traffic</li>
+                </ol>
+                <p>OpenSSH is a fork of the original SSH protocol by the OpenBSD community. This is what is usually installed as the original SSH program is now proprietary.</p>
+            </div>
+            <div>
+                <h3>SSH-Agent</h3>
+                <p>The ssh-agent is a central part of OpenSSH. shh-agent is a key manager for ssh, it holds your keys and certificates in memory, unencrypted, and ready for use by ssh. It saves you from typing in a passphrase every time you connect to a server</p>
+                <p>It runs in the background, separately from ssh. The ssh-agent keeps private keys safe because (1) it doesn't write any key material to disk and (2) it does not allow private keys to be exported.</p>
+                <p>Private keys stored in the agent can only be used for one thing: authenticating during the initial handshake!</p>
+                <p>ssh-add is your gateway to the ssh-agent.</p>
+            </div>
+            <div>
+                <h3>SSH-Agent Forwarding</h3>
+                <p>ssh-agent forwarding allows your local ssh-agent to reach through an existing ssh connection and transparently authenticate on a more distance server.</p>
+                <p>ssh connections can have multiple channels: an interactive connection to a host is on one channel, when agent forwarding is enabled (usually <code>ssh -A</code>) a second channel is opened to forward any agent requests back to your local machine.</p>
+                <p>From ssh's perspective there is no difference between a local and a remote ssh-agent. ssh always looks at the <code>$SSH_AUTH_SOCK</code> environment variables to find the unix domain socket for the agent.</p>
+                <p>Agent forwarding comes with a risk: anyone with root access on the remote host can discreetly access your local ssh-agent through the socket.</p>
+            </div>
+            <div>
+                <h3>Config</h3>
+                <p>ssh obtains configuration data from the following sources in this order:</p>
+                <ol>
+                    <li>Command line options</li>
+                    <li>User's configuration file (<code>~/.ssh/config</code>)</li>
+                    <li>System wide configuration file (<code>/etc/ssh/ssh_config</code>)</li>
+                </ol>
+                <p>Look at the man pages to see how these files should be structured.</p>
+            </div>
+        </article>
+    </main>
+    <footer></footer>
+</body>
+
+</html>
