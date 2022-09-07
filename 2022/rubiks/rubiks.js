@@ -84,18 +84,18 @@ function mousedown(md_e) {
 	}
 	function mouseup() {
 		document.body.appendChild(guide);
-		scene.removeEventListener('mousemove', mousemove);
-		document.removeEventListener('mouseup', mouseup);
-		scene.addEventListener('mousedown', mousedown);
+		scene.removeEventListener('pointermove', mousemove);
+		document.removeEventListener('pointerup', mouseup);
+		scene.addEventListener('pointerdown', mousedown);
 	}
 
 	(element || document.body).appendChild(guide);
-	scene.addEventListener('mousemove', mousemove);
-	document.addEventListener('mouseup', mouseup);
-	scene.removeEventListener('mousedown', mousedown);
+	scene.addEventListener('pointermove', mousemove);
+	document.addEventListener('pointerup', mouseup);
+	scene.removeEventListener('pointerdown', mousedown);
 }
 
 document.ondragstart = function() { return false; }
 window.addEventListener('load', assembleCube);
 var scene = document.getElementById("scene")
-scene.addEventListener('mousedown', mousedown);
+scene.addEventListener('pointerdown', mousedown);
