@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Field Monomorphisms</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>
+            <a href="/" rel="home">Joe Gurr</a>
+        </h1>
+    </header>
+    <main>
+        <article>
+            <header>
+                <h2>Monomorphisms in the Category of Fields</h2>
+                <time date="2023-03-07">March 2023</time>
+            </header>
+            <div>
+                <p>
+                    <span style="color: grey">
+                        "Fields are not as well-behaved categorically as most other common algebraic structures"
+                    </span>
+                    <span>- nCatLab</span>
+                </p>
+            </div>
+            <div>
+                <p>Recall that a morphism \(f: X \to Y\) in a category is a monomorphism if for any \(g, h: Z \to X\) then \( fg = fh \implies g = h\).</p>
+
+                <p>We want to understand what are the monomorphism in the category of fields.</p>
+
+                <p>Let <strong>Field</strong> denote the category of fields. Recall that Ob(<strong>Field</strong>) are
+                    fields and Mor(<strong>Field</strong>) are field homomorphisms.</p>
+
+                <p>Let \(f:X \to Y\) be a morphism. As \(f\) is a field homomorphism we know that the kernel of \(f\) is an
+                    ideal.</p>
+
+                <p>The only ideals in \(X\) are \(\{0\}\) and \(X\). If ker(\(f\)) was the whole field, then \(f\) would be the
+                    zero morphism, which is not a field homomorphism.</p>
+
+                <p>So ker(\(f\)) \( =\{0\}\), which tells us that \(f\) is injective.</p>
+
+                <p>Now, let \(h, k\) be a pair of parallel morphisms from \(Z\to X\) such that composition with \(f\) is
+                    sensible and \(fh = fk\).</p>
+
+                <p>Towards a contradiction, suppose that \(h \neq k\), then there exists an \(z \in Z\) such that \(h(z)
+                    \neq k(z)\).</p>
+
+                <p>As \(f\) is injective would then have \(f(h(z)) \neq f(k(z))\) violating the assumption that \(fh=fk\).
+                </p>
+
+                <p>Therefore we must have \(h=k\) meaning that \(f\) is a monomorphism. Since our choice of \(f\) was
+                    arbitrary we have that all morphisms in <strong>Field</strong> are monomorphisms. \(\blacksquare\)
+                </p>
+            </div>
+        </article>
+    </main>
+    <footer></footer>
+</body>
+
+</html>
