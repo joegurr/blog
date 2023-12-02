@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pandera</title>
+    <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+    <header>
+        <h1>
+            <a href="/" rel="home">Joe Gurr</a>
+        </h1>
+    </header>
+    <main>
+        <article>
+            <header>
+                <h2>Pandera</h2>
+                <time date="2023-12-02">December 2023</time>
+            </header>
+            <div>
+                <p>Recently I have been using <a href="https://pandera.readthedocs.io/en/stable/">pandera</a> at
+                <code>$WORK</code>.</p>
+                <p>It is a package that allows one to validate and test against dataframe-like objects. </p>
+                <p>The following is a quick reminder for myself how I have been using it.</p>
+
+                <p>Given a pandas dataframe called <code>df</code>, you can infer a schema as follows.</p>
+
+<pre>
+<code>import pandera as pa
+
+schema = pa.infer_schema(df)
+
+print(schema.to_script())
+</code>
+</pre>
+
+                <p>This schema is a structure of the dataframe you have provided.</p>
+
+                <p>Invariably I have to go back and update this schema, as it will have picked up specific qualities of
+                    the particular dataframe I provided, rather than the generic structure.</p>
+
+                <p>I have found this process to be very useful as it forces you to think deeply about what you would
+                    like to validate against.</p>
+
+                <p>Once corrected I take this schema and add it to the repo I'm working in. I usually have been having
+                    one module per schema. I also have been adding the following function to each module (even though I
+                    know there is a better way of doing this):
+                </p>
+
+<pre>
+<code>def validate(df, logger):
+    # Returns the df if validated else None
+    try:
+        return schema.validate(df)
+    except pa.errors.SchemaError as e:
+        logger.error(f"Failed to validate: {e}")
+        return None
+</code>
+</pre>
+            </div>
+        </article>
+    </main>
+    <footer></footer>
+</body>
+
+</html>
